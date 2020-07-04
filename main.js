@@ -26,11 +26,13 @@ var controls = new function () {
     this.cam_y = 1.0
     this.cam_z = 5.0
     this.hoge = 0.0
+    this.b_butterfly = 0
 };
 gui.add(controls, 'cam_x', -1.0, 1.0, 0.1);
 gui.add(controls, 'cam_y', 0.0, 2.0, 0.1);
 gui.add(controls, 'cam_z', 0.5, 5.0, 0.1);
-gui.add(controls, 'hoge', -Math.PI, Math.PI, 0.1);
+gui.add(controls, 'b_butterfly',0,1,1)
+//gui.add(controls, 'hoge', -Math.PI, Math.PI, 0.1);
 
 // -- scene ----------------------------------------------------------------------------------------
 const scene = new THREE.Scene();
@@ -78,8 +80,11 @@ function update() {
         const s = 0.25 * Math.PI * Math.sin( Math.PI * clock.elapsedTime*1000 );
         currentVRM.humanoid.getBoneNode(THREE.VRMSchema.HumanoidBoneName.RightUpperArm).rotation.z = r_shoulder_angle;
         currentVRM.humanoid.getBoneNode(THREE.VRMSchema.HumanoidBoneName.LeftUpperArm).rotation.z = l_shoulder_angle;
-        //currentVRM.humanoid.getBoneNode(THREE.VRMSchema.HumanoidBoneName.RightUpperArm).rotation.z = s;
-        //currentVRM.humanoid.getBoneNode( THREE.VRMSchema.HumanoidBoneName.LeftUpperArm ).rotation.z =  s;
+        if (controls.b_butterfly) {
+            currentVRM.humanoid.getBoneNode(THREE.VRMSchema.HumanoidBoneName.RightUpperArm).rotation.z = s;
+            currentVRM.humanoid.getBoneNode( THREE.VRMSchema.HumanoidBoneName.LeftUpperArm ).rotation.z =  s;
+        }
+
         currentVRM.update(delta); // VRMの各コンポーネントを更新
     }
 
