@@ -3,6 +3,7 @@
 <html>
 
 <head>
+    <meta charset="utf-8" />
     <title>Aya_webapp</title>
     <!-- ★CDNでもろもろのライブラリを取得。 -->
     <script src="https://unpkg.com/three@0.108"></script>
@@ -19,12 +20,16 @@
     </style>
 </head>
 <body>
-
-<!-- Div which will hold the Output -->
-<div id="WebGL-output">
-</div>
-
-<!-- Javascript code that runs our Three.js examples -->
-<script src="main.js"></script>
+    <button onclick="stop()">停止</button>
+    <button onclick="play1()" id="play">ボイス1</button>
+    <button onclick="play2()" id="play">ボイス2</button>
+    <button onclick="play3()" id="play">ボイス3</button>
+    <button onclick="play4()" id="play">ボイス4</button>
+    <button onclick="play5()" id="play">ボイス5</button>
+    <!-- Div which will hold the Output -->
+    <div id="WebGL-output">
+    </div>
+    <!-- Javascript code that runs our Three.js examples -->
+    <script src="main.js"></script>
 </body>
 </html>
